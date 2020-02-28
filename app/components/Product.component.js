@@ -10,14 +10,14 @@ import themes from '../styles/theme.style';
 class Product extends Component {
     addToCart = () => {
         this.props.addItemsToCart(this.props.item)
-    
     }
     render() {
         const { product } = this.props;
+        let ProductImage = {uri: product.picture}
             return (
         <View style={styles.container}>
            <View >
-           <Image source={{uri: product.picture, cache: 'only-if-cached',}} style={{width:200,height:100}}/>
+           <Image source={ProductImage} style={{height:150, margin:3, width:250,resizeMode:'stretch'}}/>
            </View>
             <View style={styles.productDes}>
                 <Text>{product.title}</Text>
