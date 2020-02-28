@@ -71,9 +71,11 @@ const styles = StyleSheet.create({
         fontSize: 14
     },
     addBtn: {
-        borderRadius: 30,
-        margin: 10,
-        padding:10,
+        width:'100%',
+        height:30,
+        borderRadius: 10,
+        margin: 5,
+        padding:5,
         backgroundColor: themes.BUTTON_COLOR
     },
 })
