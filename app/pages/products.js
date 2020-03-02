@@ -22,7 +22,10 @@ class Products extends Component {
       super(props);
   }
   componentWillMount = () => {
-    this.props.fetchProducts();
+  
+      this.props.fetchProducts();
+   
+    
   }
   addItemsToCart = (product) => {
       this.props.addToCart(product);

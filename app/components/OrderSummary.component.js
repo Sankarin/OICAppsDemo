@@ -13,7 +13,8 @@ class OrderSummary extends Component {
             
             <View style={styles.productDes}>
                 <Text style={styles.text}>{item.title}</Text>
-                <Text style={styles.text}>${(item.cost).toFixed(2)}</Text>
+                {/* <Text style={styles.text}>${(item.cost).toFixed(2)}</Text> */}
+                <Text style={styles.text}>${(item.cost)}</Text>
             </View>
         </View>
     );

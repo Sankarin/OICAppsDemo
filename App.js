@@ -7,9 +7,9 @@ import Route from './app/routes';
 export default class App extends Component {
   render() {
     return (
-      <Provider store={store}>
-        <Route/>
-      </Provider>
+     <Provider  store={store}>
+    <Route/>
+  </Provider>
     );
   }
 }

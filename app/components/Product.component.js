@@ -21,7 +21,7 @@ class Product extends Component {
            </View>
             <View style={styles.productDes}>
                 <Text>{product.title}</Text>
-                <Text>${(product.cost).toFixed(2)}</Text>
+                <Text>${(product.cost)}</Text>
                 <Text>{product.author}</Text>
                 <TouchableOpacity onPress={this.addToCart} style={styles.addBtn}>
                     <Text style={styles.text}>Add to cart</Text>

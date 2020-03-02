@@ -1,11 +1,22 @@
 import React from 'react';
 import {StyleSheet, Text, View,TextInput,TouchableOpacity} from 'react-native'
 
+
 export default class AppLogin extends React.Component{
     state={
         email:"",
         password:""
     }
+    // componentWillMount = () => {
+    //   client.product.fetchAll().then((products) => {
+
+    //    let product = products.map((res) => {
+    //      console.log(res.title)
+    //      console.log(res.variants[0].price)
+    //      console.log(res.images.length ? res.images[0].src: null)
+    //    });
+    //   });
+    // }
     render(){
         return(
             <View style={styles.container}>
