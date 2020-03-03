@@ -99,9 +99,8 @@
 //         picture: "https://cdn.shopify.com/s/files/1/0240/2317/1168/products/135-a1.jpg?v=1582077132" ,
 //         cost: 2990.00
 //     }
-//     ];    
+//     ];
 
-    // export const getProducts = () => {
-    //     return books;
-    // }
-    
+// export const getProducts = () => {
+//     return books;
+// }
