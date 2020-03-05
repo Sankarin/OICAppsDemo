@@ -1,4 +1,4 @@
-import { ADD_ORDER } from '../actions/types';
+import { CHECKOUT_UPDATE_SHIPPING_ADDRESS } from '../actions/types';
 const initialState = {
         order: {
         items: [],
@@ -7,7 +7,7 @@ const initialState = {
 }
 export default function(state = initialState, action) {
     switch(action.type) {
-        case ADD_ORDER:
+        case CHECKOUT_UPDATE_SHIPPING_ADDRESS:
             return {
                 ...state,
                 order: {customer: action.payload.customer, items: action.payload.cartItems}

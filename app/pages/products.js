@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, FlatList} from 'react-native';
+import {View, StyleSheet, FlatList,Text} from 'react-native';
 import {connect} from 'react-redux';
 import Product from '../components/Product.component';
-import {addToCart} from '../redux/actions/cartActions';
 import {fetchProducts} from '../redux/actions/productAction';
 import Logo from '../components/Logo.component';
 import Cart from '../components/Cart.component';
@@ -20,29 +19,37 @@ class Products extends Component {
   componentWillMount = () => {
     this.props.fetchProducts();
   };
-  addItemsToCart = product => {
-    this.props.addToCart(product);
-  };
+ 
   render() {
-    const {products, navigation} = this.props;
+    const {products, navigation,loading} = this.props;
+    console.log(loading)
     return (
       <View style={styles.container}>
+       {
+       !loading &&
         <View style={styles.body}>
-          <FlatList
-            data={products}
-            renderItem={({item}) => (
-              <Product
-                item={item}
-                addItemsToCart={this.addItemsToCart}
-                product={item}
-              />
-            )}
-            keyExtractor={item => item.id}
-            ItemSeparatorComponent={() => (
-              <View style={{height: 0.5, backgroundColor: '#34495e90'}} />
-            )}
-          />
-        </View>
+        <FlatList
+          data={products}
+          renderItem={({item}) => (
+            <Product
+              item={item}
+              product={item}
+              navigation={navigation}
+            />
+          )}
+          keyExtractor={item => item.id}
+          ItemSeparatorComponent={() => (
+            <View style={{height: 0.5, backgroundColor: '#34495e90'}} />
+          )}
+        />
+      </View>
+  }<View style={styles.loadingSpinnerContainer}>
+  {
+    loading &&
+
+    <Text >Loading ......</Text>
+  }
+  </View>
       </View>
     );
   }
@@ -52,15 +59,19 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   body: {
-    flex: 1,
     justifyContent: 'center',
+  },
+  loadingSpinnerContainer:{
+    justifyContent:'center',
+    alignItems:'center',
+    flex:1,
   },
 });
 const mapStateToProps = state => ({
   products: state.products.items,
+  loading:state.products.loading,
 });
 const mapDispatchToProps = {
-  addToCart,
   fetchProducts,
 };
 const AppContainer = connect(

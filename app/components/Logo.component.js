@@ -12,7 +12,7 @@ class Logo extends Component {
   render() {
     return (
       <TouchableOpacity onPress={this.goHome}>
-          <Image source={logoImage} style={{width:32, height:32}}/>
+          <Image source={logoImage} style={{width:25, height:25,resizeMode:'center',marginLeft:10,}}/>
       </TouchableOpacity>
     );
   }

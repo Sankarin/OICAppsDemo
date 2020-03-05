@@ -12,6 +12,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Products from '../pages/products';
 import Checkout from '../pages/Checkout';
 import Receipt from '../pages/Receipt';
+import ProductDetails from '../pages/ProductDetails';
 import themes from '../styles/theme.style';
 
 
@@ -33,6 +34,9 @@ function MyStack() {
 })} />
       <Stack.Screen name="Receipt" component={Receipt}  options={({ navigation, route }) => ({
   headerLeft: () => <Logo  navigation={navigation}   />, title:'Receipt',headerRight:()=><Cart navigation={navigation}/>
+})} />
+<Stack.Screen name="ProductDetails" component={ProductDetails}  options={({ navigation, route }) => ({
+  headerLeft: () => <Logo  navigation={navigation}   />, title:'ProductDetails',headerRight:()=><Cart navigation={navigation}/>
 })} />
     </Stack.Navigator>
     </NavigationContainer>

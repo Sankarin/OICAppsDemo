@@ -21,10 +21,11 @@ class Receipt extends Component {
   getTotal(){
     let total = 0;
     const { items } = this.props;
-    for (let i = 0; i < items.length; i++) {
-        total = total + items[i].cost
-    }
-    return <Text style={styles.totText}>Total: ${(total)}</Text>
+     total =items.reduce(function(previous,current){  
+        return previous + Number(current[0].variant.price)
+     },0)
+
+    return <Text style={styles.totText}>Total: $ {total}</Text>
   }
   render() {
     const { customer, items, navigation } = this.props;

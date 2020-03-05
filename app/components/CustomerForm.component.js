@@ -26,13 +26,27 @@ class CustomerForm extends Component {
   }
   onPressButton = () => {
         const {name, phone, email, street} = this.state;
-        const { cartItems, navigation, addOrder, emptyCart } = this.props;
+        const { cartItems, navigation, addOrder, emptyCart,checkoutId } = this.props;
         if (name === '') { return Alert.alert('enter name')}
         if (phone === '') { return Alert.alert('enter phone')}
         if (email === '') { return Alert.alert('enter email')}
         if (street === '') { return Alert.alert('enter street')}
         let customer = { name: name, phone: phone, email: email, street: street}
-        addOrder({cartItems: cartItems, customer: customer});
+
+        const shippingAddress = {
+        address1: street,
+        address2: '',
+        city: '',
+        company: null,
+        country: '',
+        firstName: name,
+        lastName: '',
+        phone: phone,
+        province: '',
+        zip: '',
+        };
+        const order={cartItems: cartItems, customer: customer}
+        addOrder(checkoutId,shippingAddress,order);
         emptyCart();
         this.setState({name: ''});
         this.setState({phone: ''});
@@ -83,6 +97,7 @@ const styles = StyleSheet.create({
     }
 });
 const mapStateToProps = (state) => ({
-    cartItems: state.cart.cart
+    cartItems: state.cart.cart,
+    checkoutId:state.cart.checkoutId,
 })
 export default connect(mapStateToProps, {addOrder, emptyCart})(CustomerForm);

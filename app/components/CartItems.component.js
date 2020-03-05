@@ -13,6 +13,16 @@ class CartItems extends Component {
     state = {
         activeRowKey: null
     }
+    
+removeItemToCart = () =>{
+    const { item, index ,checkoutId} = this.props;
+
+    const removeItem={index: index, item: item}
+
+    console.log(removeItem)
+    const lineItemIdsToRemove = [item[0].id];
+    this.props.removeItem(checkoutId,lineItemIdsToRemove,removeItem);
+}
     render() {
         const swipeSettings = {
             autoClose: true,
@@ -27,7 +37,7 @@ class CartItems extends Component {
                             'Are you sure you want to delete?',
                             [
                             {text: 'No', onPress:() => console.log('Cancel Pressed'), style: 'cancel'},
-                            {text: 'Yes', onPress:() => { this.props.removeItem({index: this.props.index, item: this.props.item})}},
+                            {text: 'Yes', onPress:  this.removeItemToCart},
                             ],
                             { cancelable: true}
                         )
@@ -44,9 +54,9 @@ class CartItems extends Component {
                 <View style={styles.container}>
                     
                     <View style={styles.productDes}>
-                        <Text style={styles.text}>{item.title}</Text>
+                        <Text style={styles.text}>{item[0].title}</Text>
                         {/* <Text style={styles.text}>${(item.cost).toFixed(2)}</Text> */}
-                        <Text style={styles.text}>${(item.cost)}</Text>
+                        <Text style={styles.text}>${(item[0].variant.price)}</Text>
                     </View>
                 </View>
             </Swipeout>
@@ -68,4 +78,14 @@ const styles = StyleSheet.create({
         padding: 10
     }
 });
-export default connect(null,{removeItem})(CartItems);
+const mapStateToProps = state => ({
+    checkoutId:state.cart.checkoutId
+  });
+  const mapDispatchToProps = {
+    removeItem,
+  };
+  const AppContainer = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  )(CartItems);
+  export default AppContainer;
